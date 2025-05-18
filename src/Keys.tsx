@@ -31,7 +31,7 @@ export function Keys(props: KeysProps) {
 
         sortData();
         console.log(sorting);
-    }, [sorting]);
+    }, [currentSorting, props.initialData]);
 
     const handleNameClick = (id: number, name: string) => {
         setEditingId(id);
