@@ -15,23 +15,23 @@ export function Keys(props: KeysProps) {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
+        const sortData = () => {
+            const sortedData = [...props.initialData].sort((a, b) => {
+                console.log(a, b);
+                if (currentSorting === 'ASC') {
+                    return a.id - b.id;
+                } else {
+                    return b.id - a.id;
+                }
+            });
+
+            setData(sortedData);
+            console.log(sortedData);
+        };
+
         sortData();
         console.log(sorting);
     }, [sorting]);
-
-    const sortData = () => {
-        const sortedData = [...props.initialData].sort((a, b) => {
-            console.log(a, b);
-            if (currentSorting === 'ASC') {
-                return a.id - b.id;
-            } else {
-                return b.id - a.id;
-            }
-        });
-
-        setData(sortedData);
-        console.log(sortedData);
-    };
 
     const handleNameClick = (id: number, name: string) => {
         setEditingId(id);
